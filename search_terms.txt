@@ -1,0 +1,15 @@
+Humanist;1
+Humanismus;3
+Partei;1
+pdh;1
+PDH;2
+Partei der Humanisten;10
+Humanistische Partei;9
+Humanistenpartei;8
+Humanistische Bewegung;7
+Humanistische Politik;6
+Humanistische Ideale;5
+Humanistische Werte;4
+Humanismus;3
+Humanistisches Gedankengut;2
+Humanistische Grundsätze;1
