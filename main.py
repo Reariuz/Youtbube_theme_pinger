@@ -98,7 +98,7 @@ def main():
                 #reformats the transcript results
                 for line2 in result:
                     new_dict ={} 
-                    new_dict['text']=line2['text']
+                    new_dict['text']=str(line2['text']).replace("\n", " ")
                     new_dict['minutes'] = int(line2['start']/60)
                     new_dict['seconds'] = int(line2['start']%60)
                     new_list.append(new_dict)
@@ -129,6 +129,8 @@ def main():
                     except:
                         print("error")
                         print(subline)
+
+            pprint.pprint(message)
 
             print("write file")
             with open(message[1]+'_testfile.txt', 'w') as f:
