@@ -31,13 +31,16 @@ Das Wort:"Partei" kommt 23 mal vor und ist mit 1 gewichtet
 + 16:7 - die aktuell regierende Partei hat sowieso überall so viel Einfluss,
 + 16:24 - Eine Partei könnte also, wenn sie einmal an der Macht ist,
 + 17:12 - einzelner Menschen oder einzelner Parteien.
+---
 Das Wort:"Politik" kommt 5 mal vor und ist mit 1 gewichtet
 + 3:21 - sondern demokratisch gewählte Politiker.
 + 3:44 - für die Politik, also ein Verfassungsgericht.
 + 6:42 - das die Politik kontrolliert
 + 9:27 - und die Unzufriedenheit mit der Politik -
 + 10:27 - Politiker der AfD bezeichnen die anderen Parteien
+---
 Das Wort:"Wahl" kommt 3 mal vor und ist mit 1 gewichtet
 + 3:16 - durften alle Deutschen, auch Frauen, zur Wahl gehen und mitbestimmen.
 + 15:58 - dann seien Wahlen auch nicht mehr so entscheidend, sagt Steinbeis.
 + 16:21 - immer noch mehr Zuspruch bekommen würden bei Wahlen.
+---

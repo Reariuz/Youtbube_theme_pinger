@@ -130,11 +130,11 @@ def main():
                         print("error")
                         print(subline)
                 message.append("---")
-                
+
             pprint.pprint(message)
 
             print("write file")
-            with open(message[1]+'_testfile.txt', 'w') as f:
+            with open(message[1]+'_testfile.md', 'w') as f:
                 for row in message:
                     f.write(f"{row}\n")
             message.clear()  
