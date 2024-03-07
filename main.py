@@ -9,8 +9,6 @@ result_list =[]
 search_list = []
 
 
-
-
 # searches for a term of the searchlist in the transcript returns the line
 def search(term,transcript):
     result_list.clear()
@@ -25,74 +23,65 @@ def search(term,transcript):
 def main():
 
     Channel_list = []
-    # Open the file in read mode
+    video_list = []
+    control_list = []
+
+    # Open the Channel List and transfer to Channel_list
     with open('Channel_list.txt', 'r') as file:
         for line in file:
             # Read all the lines of the file into a list
             Channel = line.replace("\n","").split(';')
             Channel_list.append(Channel)
 
+    # Open the search term List and transfer to Search_list
     with open('search_terms.txt', 'r') as file:
         for line in file:
             # Read all the lines of the file into a list
             term = line.replace("\n","").split(';')
             search_list.append(term)
 
-    print(search_list)
 
-
-    video_list = []
+    # get the current video from youtube_api function
     for line in Channel_list:
         video_list.append(get_current_video(line[0],line[1]))
 
-    #print(video_list)
 
+    #load a list of the last checked videos an channels to compare
     with open('current_videos.json', 'r') as fp:
         previous_video = json.load(fp)
-    
-    #print(previous_video)
-    #print(video_list)
 
-    control_list = []
+
+    #Compares the lists to generate the Control_list containing only the changed entrys
     for line in video_list:
-        #print(line)
-        #print(previous_video['Channel_Id'])
-
         if not line in previous_video:
-
-            #do nothing
-            print('new value found')
-            print(line)
             control_list.append(line)
-        else:
-            print("comparrison worked")
-            print(line)
 
     '''
+    ### TODO - de-comment this paragraph to write the new video_ids to file for next-time comparission
+    ### DONOT de-comment this before because it will overwrite the json-file and future test might not create videos
     erst datei schreiben wenn programm fertig
     with open('current_videos.json', 'w') as fp:
         json.dump(video_list, fp)
     '''
-        
+
+    #main loop
+
     for line in control_list:
         relevance_indicator = bool(False)
 
         #get the transcript from the video in german
         transcript = YouTubeTranscriptApi.get_transcript(line['latest_Video_Id'], languages=['de'])
 
+        #set the relevancy value for each video back to 0
         overall_weight = 0
 
         resulting_table = []
-        #resulting_table.append(line)
-
         found_words = []
-
 
 
         for word in search_list:
 
             result = search(word[0],transcript)
-            #print(word[0],' Gewicht ist:', word[1])
 
 
             if math.log(len(result)+1)*int(word[1]) > 0:
@@ -102,28 +91,23 @@ def main():
                 found_words.append(word[0])
 
                 new_list.append('Das Wort:"'+ word[0] +'" kommt '+ str(len(result))+ ' mal vor und ist mit '+ str(word[1])+ ' gewichtet')
-                #new_list.append('gesamtgewicht ist:'+ str(math.log(len(result)+1)*int(word[1])))
 
-                #check this line
+                #adding the weight to the overall using logaryhmic
                 overall_weight += math.log(len(result)+1)*int(word[1])
 
                 #reformats the transcript results
                 for line2 in result:
-                    new_dict ={}
-                    
+                    new_dict ={} 
                     new_dict['text']=line2['text']
                     new_dict['minutes'] = int(line2['start']/60)
                     new_dict['seconds'] = int(line2['start']%60)
                     new_list.append(new_dict)
-                
-                #pprint.pprint(new_list)
                 resulting_table.append(new_list)
 
-            #format this shit
 
-            #call export function
+        #if Words were found in video toggle the formating 
         if relevance_indicator == bool(True):
-            #hier soll das zeilenweise Ausgabeformat entstehen
+            #Format the results line-wise and write them to a list
             print("create message for:" + str(line))
             message = []
             message.append("[**"+get_video_metadata(line['latest_Video_Id'])+"**](https://youtu.be/"+line['latest_Video_Id']+"?feature=shared)")
@@ -131,19 +115,21 @@ def main():
             message.append("---")
             message.append("*Relevanz: **"+str(overall_weight)+"***")
             message.append("*Folgende Wörter wurden im Video identifiziert:*")
+            #adding all the words from the searchlist that has ben found
             for word in found_words:
                 message.append("+"+word)
+            #format and add all the wordspecific timestamps and quotes    
             message.append("---")
             for line in resulting_table:
                 message.append(line[0])
                 for subline in line[1:]:
+                    ### TODO -keep try except until final tests
                     try:
-                        #message.append("+ " + str(subline['minutes']) + ":" + str(subline['seconds']) + "- \"" +str(subline['text']) +"\"")
                         message.append("+ " + str(subline['minutes'])  + ":" + str(subline['seconds'])+ " - " +str(subline['text']))
                     except:
                         print("error")
                         print(subline)
-                        
+
             print("write file")
             with open(message[1]+'_testfile.txt', 'w') as f:
                 for row in message:
