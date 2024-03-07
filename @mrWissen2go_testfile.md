@@ -1,11 +1,11 @@
 [**Ist unsere Demokratie in Gefahr?**](https://youtu.be/DRY3qPHsKwQ?feature=shared)
 @mrWissen2go
 ---
-*Relevanz: **6.3561076606958915***
-*Folgende Wörter wurden im Video identifiziert:*
-+Partei
-+Politik
-+Wahl
+*Relevanz: **6.3561076606958915***<br>
+*Folgende Wörter wurden im Video identifiziert:*<br>
++Partei<br>
++Politik<br>
++Wahl<br>
 ---
 Das Wort:"Partei" kommt 23 mal vor und ist mit 1 gewichtet
 + 0:21 - Es gibt nur noch eine Partei.

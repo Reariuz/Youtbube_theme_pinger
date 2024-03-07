@@ -1,11 +1,11 @@
 [**So werden wir von der Politik ver*rscht**](https://youtu.be/GtBnj3Z3eO4?feature=shared)
 @maiLab
 ---
-*Relevanz: **5.375278407684165***
-*Folgende Wörter wurden im Video identifiziert:*
-+Partei
-+Politik
-+Wahl
+*Relevanz: **5.375278407684165***<br>
+*Folgende Wörter wurden im Video identifiziert:*<br>
++Partei<br>
++Politik<br>
++Wahl<br>
 ---
 Das Wort:"Partei" kommt 8 mal vor und ist mit 1 gewichtet
 + 1:8 - derzeit auch die gefährlichste Partei, die wir aktuell im Bundestag haben.

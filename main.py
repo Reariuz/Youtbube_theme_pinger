@@ -113,11 +113,11 @@ def main():
             message.append("[**"+get_video_metadata(line['latest_Video_Id'])+"**](https://youtu.be/"+line['latest_Video_Id']+"?feature=shared)")
             message.append(line['Channel_Name'])
             message.append("---")
-            message.append("*Relevanz: **"+str(overall_weight)+"***")
-            message.append("*Folgende Wörter wurden im Video identifiziert:*")
+            message.append("*Relevanz: **"+str(overall_weight)+"***"+"<br>")
+            message.append("*Folgende Wörter wurden im Video identifiziert:*"+"<br>")
             #adding all the words from the searchlist that has ben found
             for word in found_words:
-                message.append("+"+word)
+                message.append("+"+word+"<br>")
             #format and add all the wordspecific timestamps and quotes    
             message.append("---")
             for line in resulting_table:
