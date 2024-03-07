@@ -129,7 +129,8 @@ def main():
                     except:
                         print("error")
                         print(subline)
-
+                message.append("---")
+                
             pprint.pprint(message)
 
             print("write file")

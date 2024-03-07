@@ -1,6 +1,8 @@
 Humanist;1
 Humanismus;3
 Partei;1
+Politik;1
+Wahl;1
 pdh;1
 PDH;2
 Partei der Humanisten;10
