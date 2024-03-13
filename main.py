@@ -1,8 +1,22 @@
 import json
 import math
+import re
 
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_api import get_current_video, get_video_metadata
+
+def verify_file(filename):
+
+    CHANNEL_FILE_PATTERN = re.compile("(UC.{22}\;\@.*\n)")
+    TERM_FILE_PATTERN = re.compile("(.*\;(([1][0])|([1-9]))\n)")
+
+    with open(filename, mode="rt", encoding="utf-8") as docFile:
+        
+        doc = docFile.read()
+        result = re.findall(CHANNEL_FILE_PATTERN, doc)
+        print(result)
+
+    return True
 
 def read_file_to_list(filename, delimiter=';'):
     """Reads a file into a list of lines."""
@@ -59,6 +73,7 @@ def generate_output(video, overall_weight, found_words, resulting_table):
     print(f"Output written to {filename}")
 
 def main():
+    verify_file('Channel_list.txt')
     channel_list = read_file_to_list('Channel_list.txt')
     search_terms = read_file_to_list('search_terms.txt')
     
