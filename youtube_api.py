@@ -35,7 +35,11 @@ def get_current_video(Channel_ID,Channel_Name):
         maxResults=1,
         order="date"
     )
-    response = request.execute()
+    try:
+        response = request.execute()
+    except googleapiclient.errors.HttpError:
+        print("API Point Limit extended")
+        exit()
 
     #Dumps the ID of the latest video into internal varable
     video_Id = json.dumps(response["items"][0]["id"]["videoId"]).strip('"')
@@ -66,7 +70,11 @@ def get_video_metadata(Video_Id):
         part="snippet",
         id=Video_Id
     )
-    response = request.execute()
+    try:
+        response = request.execute()
+    except googleapiclient.errors.HttpError:
+        print("API Point Limit extended")
+        exit()
 
     
 
