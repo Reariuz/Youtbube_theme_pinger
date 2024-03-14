@@ -4,6 +4,7 @@ import re
 
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_api import get_current_video, get_video_metadata
+from Discourse_bot import Hub_POST
 
 def verify_file(filename):
 
@@ -59,7 +60,8 @@ def generate_output(video, overall_weight, found_words, resulting_table):
     video_metadata = get_video_metadata(video['latest_Video_Id'])
     video_url = f"https://youtu.be/{video['latest_Video_Id']}?feature=shared"
     message = [
-        f"[**{video_metadata}**]({video_url})",
+        video_url,
+        f"**{video_metadata}**",
         video['Channel_Name'],
         "---",
         f"*Relevanz: **{overall_weight:.2f}***<br>",
@@ -67,6 +69,9 @@ def generate_output(video, overall_weight, found_words, resulting_table):
     ] + [f"+{word}<br>" for word in found_words] + ["---"] + resulting_table
 
     filename = f"{video['Channel_Name']}_testfile.md"
+
+    Hub_POST(message)
+
     with open(filename, 'w') as f:
         for line in message:
             f.write(f"{line}\n")
@@ -88,8 +93,11 @@ def main():
     new_videos = [video for video in video_list if video not in previous_videos]
 
     # Save the updated list of videos for future comparisons
+    '''
     with open('current_videos.json', 'w') as fp:
         json.dump(video_list, fp)
+    '''
+        
 
     for video in new_videos:
         transcript = get_transcript(video['latest_Video_Id'])
