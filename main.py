@@ -17,7 +17,15 @@ def verify_file(filename):
         result = re.findall(CHANNEL_FILE_PATTERN, doc)
         print(result)
 
-    return True
+    #return True
+
+
+    compiled_pattern = re.compile(pattern)
+    
+    with open(filename, 'r') as file:
+        for line_number, line in enumerate(file, start=1):
+            if not compiled_pattern.match(line.strip()):
+                raise ValueError(f"Line {line_number} in file '{filename}' does not match the expected format.")
 
 def read_file_to_list(filename, delimiter=';'):
     """Reads a file into a list of lines."""
@@ -60,22 +68,24 @@ def generate_output(video, overall_weight, found_words, resulting_table):
     video_metadata = get_video_metadata(video['latest_Video_Id'])
     video_url = f"https://youtu.be/{video['latest_Video_Id']}?feature=shared"
     message = [
-        video_url,
-        f"**{video_metadata}**",
+        f"[**{video_metadata}**]({video_url})",
         video['Channel_Name'],
         "---",
-        f"*Relevanz: **{overall_weight:.2f}***<br>",
+        f"*Relevanz: **{overall_weight:.2f}***",
         "*Folgende Wörter wurden im Video identifiziert:*<br>"
-    ] + [f"+{word}<br>" for word in found_words] + ["---"] + resulting_table
-
-    filename = f"{video['Channel_Name']}_testfile.md"
+    ] + [f"+{word}" for word in found_words] + ["---"] + resulting_table
 
     Hub_POST(message)
 
+    '''
+    #TODO Brauchen wir noch eine mitschrift als datei?
+    filename = f"{video['Channel_Name']}_testfile.md"
+    
     with open(filename, 'w') as f:
         for line in message:
             f.write(f"{line}\n")
     print(f"Output written to {filename}")
+    '''
 
 def main():
     verify_file('Channel_list.txt')
