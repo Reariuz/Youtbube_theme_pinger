@@ -6,32 +6,18 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_api import get_current_video, get_video_metadata
 from Discourse_bot import Hub_POST
 
-def verify_file(filename):
 
-    CHANNEL_FILE_PATTERN = re.compile("(UC.{22}\;\@.*\n)")
-    TERM_FILE_PATTERN = re.compile("(.*\;(([1][0])|([1-9]))\n)")
-
-    with open(filename, mode="rt", encoding="utf-8") as docFile:
-        
-        doc = docFile.read()
-        result = re.findall(CHANNEL_FILE_PATTERN, doc)
-        print(result)
-
-    #return True
-
-
-    compiled_pattern = re.compile(pattern)
-    
-    with open(filename, 'r') as file:
-        for line_number, line in enumerate(file, start=1):
-            if not compiled_pattern.match(line.strip()):
-                raise ValueError(f"Line {line_number} in file '{filename}' does not match the expected format.")
-
-def read_file_to_list(filename, delimiter=';'):
+def read_file_to_list(filename, pattern, delimiter=';'):
     """Reads a file into a list of lines."""
+    compiled_pattern = re.compile(pattern)
+
     try:
-        with open(filename, 'r') as fp:
-            return [line.strip().split(delimiter) for line in fp]
+        with open(filename, 'r') as file:
+            for line_number, line in enumerate(file, start=1):
+                if not compiled_pattern.match(line.strip()):
+                    raise ValueError(f"Line {line_number} in file '{filename}' does not match the expected format.")
+            print(f"File '{filename}' is correct")
+            return [line.strip().split(delimiter) for line in file]
     except FileNotFoundError:
         print(f"File {filename} not found.")
         return []
@@ -75,7 +61,7 @@ def generate_output(video, overall_weight, found_words, resulting_table):
         "*Folgende Wörter wurden im Video identifiziert:*<br>"
     ] + [f"+{word}" for word in found_words] + ["---"] + resulting_table
 
-    Hub_POST(message)
+    #Hub_POST(message)
 
     '''
     #TODO Brauchen wir noch eine mitschrift als datei?
@@ -88,9 +74,9 @@ def generate_output(video, overall_weight, found_words, resulting_table):
     '''
 
 def main():
-    verify_file('Channel_list.txt')
-    channel_list = read_file_to_list('Channel_list.txt')
-    search_terms = read_file_to_list('search_terms.txt')
+    #verify_file('Channel_list.txt')
+    channel_list = read_file_to_list('Channel_list.txt',"(UC.{22}\;\@.*)")
+    search_terms = read_file_to_list('search_terms.txt',"(.*\;(([1][0])|([1-9])))")
     
     try:
         with open('current_videos.json', 'r') as fp:
