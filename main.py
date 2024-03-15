@@ -47,7 +47,7 @@ def format_result(word, results, weight):
     for result in results:
         minutes = int(result['start'] / 60)
         seconds = int(result['start'] % 60)
-        text = result['text'].encode().decode('unicode_escape').replace("\n", " ")
+        text = result['text'].replace("\n", " ")
         message.append(f"+ {minutes}:{seconds:02d} - {text} <br>")
     message.append("---")
     return message
