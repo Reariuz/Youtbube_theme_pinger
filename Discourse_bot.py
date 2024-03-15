@@ -1,6 +1,6 @@
 from fluent_discourse import Discourse
 client = Discourse(base_url="https://hub.diehumanisten.de", username="rene.bruns",
-                   api_key="75e55d01584d41ebc915ee911ab9a08f2e4b992d7a2429da09dbe19b718c32b0", raise_for_rate_limit=True)
+                   api_key="75e55d01584d41ebc915ee911ab9a08f2e4b992d7a2429da09dbe19b718c32b0", raise_for_rate_limit=False)
 
 
 def Hub_POST(message):

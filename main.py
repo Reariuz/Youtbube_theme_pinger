@@ -10,14 +10,16 @@ from Discourse_bot import Hub_POST
 def read_file_to_list(filename, pattern, delimiter=';'):
     """Reads a file into a list of lines."""
     compiled_pattern = re.compile(pattern)
-
+    return_line = []
     try:
         with open(filename, 'r') as file:
             for line_number, line in enumerate(file, start=1):
                 if not compiled_pattern.match(line.strip()):
                     raise ValueError(f"Line {line_number} in file '{filename}' does not match the expected format.")
+                return_line.append(line.strip().split(delimiter))
             print(f"File '{filename}' is correct")
-            return [line.strip().split(delimiter) for line in file]
+            return return_line
+            #return [line.strip().split(delimiter) for line in file]
     except FileNotFoundError:
         print(f"File {filename} not found.")
         return []
@@ -44,14 +46,14 @@ def format_result(word, results, weight):
     for result in results:
         minutes = int(result['start'] / 60)
         seconds = int(result['start'] % 60)
-        text = result['text'].replace("\n", " ")
+        text = result['text'].encode().decode('unicode_escape').replace("\n", " ")
         message.append(f"+ {minutes}:{seconds:02d} - {text} <br>")
     message.append("---")
     return message
 
 def generate_output(video, overall_weight, found_words, resulting_table):
     """Generates and prints the output message based on the search results."""
-    video_metadata = get_video_metadata(video['latest_Video_Id'])
+    video_metadata = get_video_metadata(video['latest_Video_Id']).encode().decode('unicode_escape')
     video_url = f"https://youtu.be/{video['latest_Video_Id']}?feature=shared"
     message = [
         f"[**{video_metadata}**]({video_url})",
@@ -61,7 +63,7 @@ def generate_output(video, overall_weight, found_words, resulting_table):
         "*Folgende Wörter wurden im Video identifiziert:*<br>"
     ] + [f"+{word}" for word in found_words] + ["---"] + resulting_table
 
-    #Hub_POST(message)
+    Hub_POST(message)
 
     '''
     #TODO Brauchen wir noch eine mitschrift als datei?
@@ -76,8 +78,10 @@ def generate_output(video, overall_weight, found_words, resulting_table):
 def main():
     #verify_file('Channel_list.txt')
     channel_list = read_file_to_list('Channel_list.txt',"(UC.{22}\;\@.*)")
+    print(channel_list)
     search_terms = read_file_to_list('search_terms.txt',"(.*\;(([1][0])|([1-9])))")
-    
+    print(search_terms)
+
     try:
         with open('current_videos.json', 'r') as fp:
             previous_videos = json.load(fp)
