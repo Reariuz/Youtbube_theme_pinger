@@ -2,6 +2,7 @@ import json
 import math
 import re
 
+from datetime import date
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_api import get_current_video, get_video_metadata
 from Discourse_bot import Hub_POST
@@ -72,8 +73,27 @@ def generate_output(video, overall_weight, found_words, resulting_table):
     with open(filename, 'w') as f:
         for line in message:
             f.write(f"{line}\n")
-    print(f"Output written to {filename}")
     '''
+    print(f"Output from {video['Channel_Name']} written to hub")
+    
+
+def final_report(count):
+
+    if count == 0:
+        amount = "keine Berichte"
+    elif count == 1:
+        amount = " ein Bericht"
+    else:
+        amount  = f"{count} Berichte"
+
+    today = date.today()
+    print("Today's date:", today)
+    message =[
+        str(today)
+        ] +["Das Programm ist fehlerfrei durchlaufen"
+        ]+[f"Es wurden {amount} erstellt"]
+    Hub_POST(message)
+
 
 def main():
     #verify_file('Channel_list.txt')
@@ -97,7 +117,7 @@ def main():
     with open('current_videos.json', 'w') as fp:
         json.dump(video_list, fp)
     '''
-        
+    report_count = 0        
 
     for video in new_videos:
         transcript = get_transcript(video['latest_Video_Id'])
@@ -113,6 +133,9 @@ def main():
 
         if found_words:
             generate_output(video, overall_weight, found_words, resulting_table)
+            report_count += 1
+    
+    final_report(report_count)
 
 if __name__ == "__main__":
     main()

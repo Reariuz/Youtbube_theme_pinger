@@ -20,7 +20,7 @@ def Hub_POST(message):
 
     }
     latest = client.posts.json.post(data)
-    print(latest)
+    #print(latest)
 
 # this part is only needed for testing and bugfixing this shit
 def main():
