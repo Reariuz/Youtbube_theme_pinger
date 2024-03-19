@@ -18,9 +18,9 @@ pdh;7
 Humanistische Politik;6
 Humanismus;6
 neuer Politikstil;6
+Kleinartei;5
 politikstil;5
 Humanist;5
 Humanismus;3
-Partei;1
-Politik;1
-Wahl;1
+europawahl;3
+EU Wahl;3
