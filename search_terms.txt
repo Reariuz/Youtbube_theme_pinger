@@ -1,17 +1,26 @@
-Humanist;1
-Humanismus;3
-Partei;1
-Politik;1
-Wahl;1
-pdh;1
-PDH;2
+Sascha Boelke;10
+Sascha Bölke;10
+Lasse Schäfer;10
+Lasse Schaefer;10
+Ole Teschke;10
+Felicitas Klings;10
+Lena Andris;10
+Alexander Weiglin;10
+Mario Caraggiu;10
+Josephine Keller;10
+Leonie Neu;10
+Conny Theimer;10
 Partei der Humanisten;10
 Humanistische Partei;9
 Humanistenpartei;8
 Humanistische Bewegung;7
+pdh;7
 Humanistische Politik;6
-Humanistische Ideale;5
-Humanistische Werte;4
+Humanismus;6
+neuer Politikstil;6
+politikstil;5
+Humanist;5
 Humanismus;3
-Humanistisches Gedankengut;2
-Humanistische Grundsätze;1
+Partei;1
+Politik;1
+Wahl;1

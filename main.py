@@ -113,10 +113,10 @@ def main():
     new_videos = [video for video in video_list if video not in previous_videos]
 
     # Save the updated list of videos for future comparisons
-    '''
+    
     with open('current_videos.json', 'w') as fp:
         json.dump(video_list, fp)
-    '''
+    
     report_count = 0        
 
     for video in new_videos:
