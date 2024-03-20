@@ -41,6 +41,8 @@ def get_current_video(Channel_ID,Channel_Name):
         print("API Point Limit extended")
         exit()
 
+    print(response)
+
     #Dumps the ID of the latest video into internal varable
     video_Id = json.dumps(response["items"][0]["id"]["videoId"]).strip('"')
 
@@ -76,7 +78,7 @@ def get_video_metadata(Video_Id):
         print("API Point Limit extended")
         exit()
 
-    
+    #print(response)
 
     video_decription_title = json.dumps(response["items"][0]["snippet"]["title"]).strip('"')
         #create a dict for less confusing return and dumps everything into it.
