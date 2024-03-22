@@ -5,15 +5,15 @@ UCziSYFB8cBdr90IQYQek-LA;@Palwanda
 UCmRSruO-hvZ9GPX7YcqjKPQ;@polis180
 UCOY3VWW4NGQAue_rqTBtdhA;@spacefrogs
 UCXup1ITuwbY5r_Gn2K2_TXA;@rezo
-UC3hekG458EdMK2KmbGbMHmw;@MarvinNeumannOfficial
+UC3hekG458EdMK2KmbGbMHmw;@MarvinNeumann
 UCfb7LAYCeJJiT3gyquv7V5Q;@DieDaOben
 UClj2hzTR0gl9VfZ9V6CM3kw;@Staiy
 UCeWYsa2ynPc0VNwqL-vF2wQ;@followmereports
 UC4mTAdfgY48VtPSXVWTC9wQ;@marliesjohanna
 UCHvYjTC3IgDMowmTNksjuOA;@NewsUp
-UCKf4B_RWmu2XY-XWQgwYhJQ;@lasse.halisch
+UCKf4B_RWmu2XY-XWQgwYhJQ;@lasse_halisch
 UCv1WDP5EiipMQ__C4Cg6aow;@Jung&Naiv
-UCt_Y3j8CpXx366et1RaHACA;@Küchenstud.io
+UCt_Y3j8CpXx366et1RaHACA;@Kuechenstudio
 UCK4LDHLxBqiAtcwCm4z7DRg;@parabelritter
 UCUJueAUOgylAOq5SsFp6NyQ;@AliciaJoe
 UCHmNfmKhIkfBMTrr5QU-gAQ;@VisualPolitikDE
@@ -32,6 +32,6 @@ UCXdfGoYTQq5eQXP6OJwWSQw;@RaykAnders
 UCo6utge9KpJI61gXe7ngUJQ;@RichtigerKevin
 UCw81xLtFkpks4D8_hYUP9VA;@Varion
 UCE2hJ9CYR57BYhk3TjGVG6w;@BreakingLab
-UCr3LVdbgOcW4NZEpo0VHnxw;@frischhaltefolie(Freshtorge)
+UCr3LVdbgOcW4NZEpo0VHnxw;@frischhaltefolie
 UCkP3cBG9m7nHSbOOEYugCLA;@impistderbeste
 UC_dw469M9fc3nraC7rIaF5Q;@SinansWoche
