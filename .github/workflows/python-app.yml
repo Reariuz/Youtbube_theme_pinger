@@ -31,4 +31,6 @@ jobs:
     - name: run Python
       env:
         DEVELOPER_KEY: ${{ secrets.DEVELOPER_KEY }}
+        DISCOURSE_API_KEY: ${{ secrets.DISCOURSE_API_KEY }}
+        DISCOURSE_API_NAME: ${{ secrets.DISCOURSE_API_NAME }}
       run: python youtube_api.py
