@@ -12,7 +12,7 @@ import googleapiclient.discovery
 #credentials for API connection
 api_service_name = "youtube"
 api_version = "v3"
-DEVELOPER_KEY = "AIzaSyA4Vxzy8sn5rS0e6Jfpm5jNRfKzrsGhMOg"
+DEVELOPER_KEY = os.getenv("DEVELOPER_KEY")
 
 
 def get_current_video(Channel_ID,Channel_Name):
