@@ -1,6 +1,10 @@
+import os
+DISCOURSE_API_KEY = os.getenv("DISCOURSE_API_KEY")
+DISCOURSE_API_NAME = os.getenv("DISCOURSE_API_NAME")
+
 from fluent_discourse import Discourse
-client = Discourse(base_url="https://hub.diehumanisten.de", username="rene.bruns",
-                   api_key="75e55d01584d41ebc915ee911ab9a08f2e4b992d7a2429da09dbe19b718c32b0", raise_for_rate_limit=False)
+client = Discourse(base_url="https://hub.diehumanisten.de", username=DISCOURSE_API_NAME,
+                   api_key=DISCOURSE_API_KEY, raise_for_rate_limit=False)
 
 
 def Hub_POST(message):
